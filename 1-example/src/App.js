@@ -1,18 +1,13 @@
 import "./App.css"
-import { store } from "./index"
+import NewNote from "./components/NewNote"
+import Notes from "./components/Notes"
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <ul>
-          {store.getState().map((note) => (
-            <li key={note.id}>
-              {note.content}
-              <br /> <strong>{note.important ? "important" : ""}</strong>
-            </li>
-          ))}
-        </ul>
+        <NewNote />
+        <Notes />
       </header>
     </div>
   )
