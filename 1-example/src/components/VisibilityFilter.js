@@ -5,7 +5,6 @@ import { filterChange } from "../reducers/filterReducer"
 const VisibilityFilter = () => {
   const dispatch = useDispatch()
   const filter = useSelector((state) => state.filter)
-  console.log("filter:", filter)
 
   return (
     <div style={{ display: "flex", gap: "12px" }}>
