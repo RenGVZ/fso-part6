@@ -2,8 +2,10 @@ import AnecdoteForm from "./components/AnecdoteForm"
 import Notification from "./components/Notification"
 import { useQuery, useMutation, useQueryClient } from "react-query"
 import { getAnecdotes, updateAnecdote } from "./services/anecdotes"
+import { useNotificationDispatch } from "./context/NotificationContext"
 
 const App = () => {
+  const NotificationDispatch = useNotificationDispatch()
   const queryClient = useQueryClient()
   const { data, error } = useQuery("anecdotes", getAnecdotes, {
     refetchOnWindowFocus: false,
@@ -19,6 +21,7 @@ const App = () => {
         "anecdotes",
         anecdotes.map((a) => (a.id === update.id ? update : a))
       )
+      NotificationDispatch({ type: "UPVOTE", content: update.content })
     },
   })
 
